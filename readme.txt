@@ -271,4 +271,4 @@ sudo chmod -R 770 /opt/mybbs/
 
     sudo systemctl status bbs_server.service
 
-   Assicurati che il servizio sia in esecuzione senza errori.
+    Assicurati che il servizio sia in esecuzione senza errori.
