@@ -50,7 +50,8 @@ Per scaricare un file già presente:
 
 Per caricare un file:
 
-    scp localfile.txt bbsuser@my-bbs-server.example.com:/home/bbsuser/uploads/ Poi dentro la BBS usa un comando :registerfile localfile.txt "Descrizione" pubblico per rendere il file visibile agli altri.
+    scp localfile.txt bbsuser@my-bbs-server.example.com:/home/bbsuser/uploads/ Poi dentro la BBS usa un comando :registerfile 
+    localfile.txt "Descrizione" pubblico per rendere il file visibile agli altri.
 
 
 
@@ -124,7 +125,8 @@ un timestamp al nome del file di backup per identificarlo facilmente.
 
 ### Lanciare il server BBS come utente bbsuser: ### 
 
-    Assicurati che il server BBS (bbs_server.py) stia girando con l'utente corretto, bbsuser. Se il server è eseguito come root o un altro utente, bbsuser potrebbe non avere i permessi per accedere al socket.
+    Assicurati che il server BBS (bbs_server.py) stia girando con l'utente corretto, bbsuser. Se il server è eseguito come 
+    root o un altro utente, bbsuser potrebbe non avere i permessi per accedere al socket.
 
     Esempio: Esecuzione del Server come bbsuser:
 
@@ -205,7 +207,8 @@ sudo chmod -R 770 /opt/mybbs/
 
     Permessi del Socket:
 
-    Impostando i permessi del socket (/opt/mybbs/bbs_server.sock) a 660, garantisci che solo bbsuser e gli utenti del gruppo bbsuser possano accedervi. Evita permessi troppo permissivi come 666, a meno che non sia strettamente necessario.
+    Impostando i permessi del socket (/opt/mybbs/bbs_server.sock) a 660, garantisci che solo bbsuser e gli utenti del 
+    gruppo bbsuser possano accedervi. Evita permessi troppo permissivi come 666, a meno che non sia strettamente necessario.
 
     
 
