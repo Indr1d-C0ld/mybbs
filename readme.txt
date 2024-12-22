@@ -1,3 +1,32 @@
+### Struttura del progetto ###
+
+mybbs/
+├── backups
+│   ├── backup.log
+├── backup.sh
+├── bbs_cli.py
+├── bbs_server.log
+├── bbs_server.py
+├── bbs_server.sock
+├── data
+│   ├── database.db
+│   └── docs
+│       ├── help.txt
+│       └── rules.txt
+├── modules
+│   ├── board.py
+│   ├── chat.py
+│   ├── files.py
+│   ├── textlib.py
+│   └── users.py
+├── monitor_logs.sh
+├── readme.txt
+├── schema.sql
+└── win_client
+    ├── bbs_cli.bat
+    └── bbs_cli.exe
+
+
 
 ### Il menu principale del client: ### 
 
@@ -218,23 +247,8 @@ sudo chmod -R 770 /opt/mybbs/
 
     Impostando i permessi del socket (/opt/mybbs/bbs_server.sock) a 660, garantisci che solo bbsuser e gli utenti del 
     gruppo bbsuser possano accedervi. Evita permessi troppo permissivi come 666, a meno che non sia strettamente necessario.
-
     
 
-### Test Manuale del Socket: ### 
-
-    Puoi usare socat o nc per verificare se il socket è accessibile.
-
-    Esempio con socat:
-
-    sudo apt install socat
-    socat - UNIX-CONNECT:/opt/mybbs/bbs_server.sock
-
-    Se tutto è configurato correttamente, dovresti vedere il messaggio di avvio dal server (OK BBS READY).
-
-
-
-### *OPZIONALE* ### 
 
 ### Configurazione di un Servizio systemd (Consigliato): ### 
 
