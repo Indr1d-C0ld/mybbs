@@ -193,23 +193,104 @@ class BBSServer:
         else:
             logging.error(f"Impossibile creare l'utente '{username}'.")
 
+    def remove_user(self, username):
+        success = self.users.delete_user(username)
+        if success:
+            logging.info(f"Utente '{username}' rimosso con successo.")
+        else:
+            logging.error(f"Impossibile rimuovere l'utente '{username}'.")
+
+    def promote_user(self, username):
+        success = self.users.promote_user(username)
+        if success:
+            logging.info(f"Utente '{username}' promosso a admin.")
+        else:
+            logging.error(f"Impossibile promuovere l'utente '{username}'.")
+
+    def demote_user(self, username):
+        success = self.users.demote_user(username)
+        if success:
+            logging.info(f"Utente '{username}' retrocesso a user.")
+        else:
+            logging.error(f"Impossibile retrocedere l'utente '{username}'.")
+
+    def list_users(self):
+        users = self.users.list_users()
+        if users is not None:
+            logging.info("Elenco degli utenti richiesto.")
+            print("Lista degli utenti:")
+            for user in users:
+                print(f"{user['username']} ({user['role']})")
+        else:
+            logging.error("Impossibile recuperare la lista degli utenti.")
+
+    def backup_database(self, backup_path='/opt/mybbs/data/database_backup.db'):
+        success = self.users.backup_database(backup_path)
+        if success:
+            logging.info(f"Backup del database effettuato con successo in '{backup_path}'.")
+            print(f"Backup del database effettuato in '{backup_path}'.")
+        else:
+            logging.error("Backup del database fallito.")
+            print("Backup del database fallito.")
+
     def stop(self):
         self.running = False
         self.server_sock.close()
         logging.info("BBS Server fermato.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Server BBS Testuale")
     parser.add_argument('--adduser', help='Aggiunge un utente admin')
+    parser.add_argument('--adduser-nonadmin', help='Aggiunge un utente non-admin')
+    parser.add_argument('--deluser', help='Rimuove un utente')
+    parser.add_argument('--promote', help='Promuove un utente a admin')
+    parser.add_argument('--demote', help='Revoca lo status admin di un utente')
+    parser.add_argument('--listusers', action='store_true', help='Lista degli utenti registrati')
+    parser.add_argument('--backup', nargs='?', const='/opt/mybbs/data/database_backup.db', default=None, help='Backup del database (specifica il percorso opzionale)')
     args = parser.parse_args()
+
     server = BBSServer()
+
+    # Gestione dei comandi amministrativi
     if args.adduser:
         import getpass
-        pw = getpass.getpass("Inserire password per user admin: ")
+        pw = getpass.getpass(f"Inserire password per l'utente admin '{args.adduser}': ")
         server.create_user(args.adduser, pw, role='admin')
-        print("Utente admin creato.")
+        print(f"Utente admin '{args.adduser}' creato.")
         sys.exit(0)
-
+    
+    if args.adduser_nonadmin:
+        import getpass
+        pw = getpass.getpass(f"Inserire password per l'utente '{args.adduser_nonadmin}': ")
+        server.create_user(args.adduser_nonadmin, pw, role='user')
+        print(f"Utente '{args.adduser_nonadmin}' creato come non-admin.")
+        sys.exit(0)
+    
+    if args.deluser:
+        server.remove_user(args.deluser)
+        print(f"Utente '{args.deluser}' rimosso.")
+        sys.exit(0)
+    
+    if args.promote:
+        server.promote_user(args.promote)
+        print(f"Utente '{args.promote}' promosso a admin.")
+        sys.exit(0)
+    
+    if args.demote:
+        server.demote_user(args.demote)
+        print(f"Utente '{args.demote}' retrocesso a user.")
+        sys.exit(0)
+    
+    if args.listusers:
+        server.list_users()
+        sys.exit(0)
+    
+    if args.backup is not None:
+        backup_path = args.backup
+        server.backup_database(backup_path)
+        sys.exit(0)
+    
+    # Avvio del server se nessun comando amministrativo è stato fornito
     server.start_socket()
     logging.info("BBS Server in esecuzione.")
     print("BBS Server in esecuzione. Controlla il log per dettagli.")
