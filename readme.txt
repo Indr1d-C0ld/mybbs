@@ -74,9 +74,18 @@ Per caricare un file:
     --listusers                             Lista degli utenti registrati
     --backup <backup>                       Backup del database (specifica il percorso opzionale)
 
-NB: Per automatizzare il processo, è possibile utilizzare lo script "backup,sh", che esegue il 
-backup utilizzando il comando già implementato nel server BBS. Questo script aggiungerà anche 
-un timestamp al nome del file di backup per identificarlo facilmente.
+    NB: Per automatizzare il processo di backup, è possibile utilizzare lo script "backup,sh", che 
+    esegue il backup utilizzando il comando già implementato nel server BBS. Questo script aggiungerà 
+    anche un timestamp al nome del file di backup per identificarlo facilmente.
+    
+    Per aggiungere lo script a cron, come utente bbsuser:
+    
+    sudo crontab -u bbsuser -e
+
+    Inserisci la seguente linea nel file crontab per eseguire il backup ogni giorno alle 2:00 AM:
+
+    0 2 * * * /opt/mybbs/backup.sh >> /opt/mybbs/backups/backup.log 2>&1
+
 
 
 
