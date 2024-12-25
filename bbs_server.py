@@ -7,7 +7,7 @@ import time
 import threading
 import socket
 import argparse
-import logging  # Importa il modulo logging
+import logging
 from modules.users import UsersManager
 from modules.board import BoardManager
 from modules.chat import ChatManager
@@ -15,8 +15,8 @@ from modules.files import FilesManager
 from modules.textlib import TextLib
 
 # Configurazione per socket TCP
-HOST = '0.0.0.0'  # Ascolta su tutte le interfacce di rete
-PORT = 12345       # Porta di ascolto
+HOST = '0.0.0.0'
+PORT = 12345
 
 # Configurazione del logging
 LOG_FILE = '/opt/mybbs/bbs_server.log'
@@ -38,14 +38,16 @@ class BBSServer:
             logging.error(f"Errore nella connessione al database: {e}")
             sys.exit(1)
         
+        # Manager vari
         self.users = UsersManager(self.conn)
         self.board = BoardManager(self.conn)
         self.chat = ChatManager(self.conn)
         self.files = FilesManager(self.conn)
-        self.textlib = TextLib('/opt/mybbs/data/docs')  # Percorso assoluto
-        self.sessions = {}  # session_id -> {user_id, ...}
+        self.textlib = TextLib('/opt/mybbs/data/docs')
+
+        # sessions: session_id -> {"user_id": <int>, "username": <str>}
+        self.sessions = {}
         self.session_counter = 0
-        self.socket_thread = None
         self.running = True
 
     def start_socket(self):
@@ -55,8 +57,7 @@ class BBSServer:
             self.server_sock.bind((HOST, PORT))
             self.server_sock.listen(5)
             logging.info(f"BBS Server in ascolto su {HOST}:{PORT}")
-            self.socket_thread = threading.Thread(target=self.accept_loop, daemon=True)
-            self.socket_thread.start()
+            threading.Thread(target=self.accept_loop, daemon=True).start()
         except Exception as e:
             logging.error(f"Errore nell'avvio del socket: {e}")
             sys.exit(1)
@@ -75,163 +76,133 @@ class BBSServer:
         user_id = None
         f = client.makefile('r')
         out = client.makefile('w')
+
         try:
             out.write("OK BBS READY\n")
             out.flush()
+
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
+
+                logging.debug(f"[{addr}] -> Comando ricevuto: {line}")
                 parts = line.split(' ', 2)
                 cmd = parts[0].upper()
 
-                logging.debug(f"Ricevuto comando da {addr}: {line}")
-
                 if cmd == 'LOGIN':
-                    # LOGIN username password
                     if len(parts) < 3:
                         out.write("ERR Missing args\n")
-                        logging.warning(f"LOGIN fallito per {addr}: args mancanti.")
                     else:
-                        user, pw = parts[1], parts[2]
-                        uid = self.users.authenticate(user, pw)
+                        username, pw = parts[1], parts[2]
+                        uid = self.users.authenticate(username, pw)
                         if uid:
                             self.session_counter += 1
                             session_id = self.session_counter
-                            self.sessions[session_id] = {'user_id': uid, 'username': user}
+                            self.sessions[session_id] = {'user_id': uid, 'username': username}
                             user_id = uid
                             out.write("OK Logged in\n")
-                            logging.info(f"Utente '{user}' autenticato da {addr}.")
+                            logging.info(f"[{addr}] Utente '{username}' autenticato. session_id={session_id}")
                         else:
                             out.write("ERR Invalid credentials\n")
-                            logging.warning(f"Autenticazione fallita per utente '{user}' da {addr}.")
+
                 elif cmd == 'LOGOUT':
                     if session_id in self.sessions:
                         del self.sessions[session_id]
-                        logging.info(f"Utente ID {user_id} disconnesso da {addr}.")
+                        logging.info(f"[{addr}] session_id={session_id} -> Logout.")
                     out.write("OK Logged out\n")
-                    out.flush()
                     session_id = None
                     user_id = None
+
                 elif user_id is None:
                     out.write("ERR Not logged in\n")
-                    logging.warning(f"Comando non autorizzato da {addr}: {line}")
+
                 else:
-                    # Passare i comandi ai vari manager
+                    # Utente autenticato
                     try:
-                        if cmd == 'WHOAMI':
-                            out.write(f"OK {self.sessions[session_id]['username']}\n")
-                        elif cmd == 'ROLE':
-                            role = self.users.get_role(user_id)
-                            out.write(f"OK {role}\n")
-                        elif cmd == 'BOARD':
-                            # Gestisce comandi come: BOARD LIST, BOARD NEW ecc.
-                            if len(parts) < 2:
-                                out.write("ERR Missing subcommand\n")
-                            else:
-                                scmd = parts[1].upper()
-                                arg = parts[2] if len(parts) > 2 else None
-                                response = self.board.handle_command(scmd, arg, user_id)
-                                out.write(response)
+                        if cmd == 'BOARD':
+                            scmd = parts[1].upper() if len(parts) > 1 else ''
+                            arg = parts[2] if len(parts) > 2 else None
+                            response = self.board.handle_command(scmd, arg, user_id)
+                            out.write(response)
+
                         elif cmd == 'CHAT':
-                            # CHAT SEND <msg>
-                            # CHAT RECV ...
-                            subcmd_line = parts[1] if len(parts) > 1 else ''
+                            # *** ECCO LA CORREZIONE CRUCIALE ***
+                            # Recuperiamo tutto ciò che segue "CHAT" in un'unica stringa:
+                            if len(parts) > 1:
+                                subcmd_line = ' '.join(parts[1:])
+                            else:
+                                subcmd_line = ''
                             response = self.chat.handle_command(subcmd_line, user_id)
                             out.write(response)
+
                         elif cmd == 'PMSG':
-                            # PMSG SUBCMD ...
-                            if len(parts) < 2:
-                                out.write("ERR Missing subcommand\n")
-                            else:
-                                scmd = parts[1].upper()
-                                arg = parts[2] if len(parts) > 2 else ''
-                                # Passare l'intera stringa "WRITE test|Messaggio privato di prova."
-                                response = self.users.handle_private_message(f"{scmd} {arg}", user_id)
-                                out.write(response)
+                            scmd = parts[1].upper() if len(parts) > 1 else ''
+                            arg = parts[2] if len(parts) > 2 else ''
+                            response = self.users.handle_private_message(f"{scmd} {arg}", user_id)
+                            out.write(response)
+
                         elif cmd == 'FILE':
-                            # FILE SUBCMD ...
                             subcmd_line = parts[1] if len(parts) > 1 else ''
                             response = self.files.handle_command(subcmd_line, user_id)
                             out.write(response)
+
                         elif cmd == 'TEXT':
-                            # TEXT SUBCMD ...
                             if len(parts) < 2:
                                 out.write("ERR Missing subcommand\n")
                             else:
-                                # Passare l'intera stringa "READ help.txt"
-                                subcmd_line = ' '.join(parts[1:])  # Modifica effettuata qui
+                                subcmd_line = ' '.join(parts[1:])
                                 response = self.textlib.handle_command(subcmd_line)
                                 out.write(response)
+
                         elif cmd == 'ADMIN':
-                            # ADMIN SUBCMD...
-                            # Controllo ruolo admin
-                            if self.users.get_role(user_id) != 'admin':
+                            role = self.users.get_role(user_id)
+                            if role != 'admin':
                                 out.write("ERR Not admin\n")
-                                logging.warning(f"Accesso ADMIN negato per utente ID {user_id} da {addr}.")
                             else:
                                 subcmd_line = parts[1] if len(parts) > 1 else ''
                                 response = self.users.handle_admin_command(subcmd_line)
                                 out.write(response)
+
+                        elif cmd == 'PASSWD':
+                            if len(parts) < 2:
+                                out.write("ERR Missing args\n")
+                            else:
+                                arg = parts[1]
+                                response = self.users.change_password(user_id, arg)
+                                out.write(response)
+
+                        elif cmd == 'WHO':
+                            out.write(self.list_connected_users())
+
+                        elif cmd == 'WHOAMI':
+                            uname = self.sessions[session_id]['username']
+                            out.write(f"OK {uname}\n")
+
                         else:
                             out.write("ERR Unknown command\n")
-                            logging.warning(f"Comando sconosciuto da {addr}: {line}")
+
                     except Exception as e:
+                        logging.error(f"Errore elaborando '{line}' per user_id={user_id}: {e}")
                         out.write("ERR Server error\n")
-                        logging.error(f"Errore durante l'elaborazione del comando '{line}' da {addr}: {e}")
+
                 out.flush()
+
         except Exception as e:
-            logging.error(f"Errore durante la gestione del client {addr}: {e}")
+            logging.error(f"Errore generico con {addr}: {e}")
         finally:
+            if session_id and session_id in self.sessions:
+                del self.sessions[session_id]
+                logging.info(f"[{addr}] session_id={session_id} -> disconnessione.")
             client.close()
-            logging.info(f"Connessione chiusa da {addr}.")
 
-    def create_user(self, username, password, role='admin'):
-        success = self.users.add_user(username, password, role)
-        if success:
-            logging.info(f"Utente '{username}' creato con ruolo '{role}'.")
-        else:
-            logging.error(f"Impossibile creare l'utente '{username}'.")
-
-    def remove_user(self, username):
-        success = self.users.delete_user(username)
-        if success:
-            logging.info(f"Utente '{username}' rimosso con successo.")
-        else:
-            logging.error(f"Impossibile rimuovere l'utente '{username}'.")
-
-    def promote_user(self, username):
-        success = self.users.promote_user(username)
-        if success:
-            logging.info(f"Utente '{username}' promosso a admin.")
-        else:
-            logging.error(f"Impossibile promuovere l'utente '{username}'.")
-
-    def demote_user(self, username):
-        success = self.users.demote_user(username)
-        if success:
-            logging.info(f"Utente '{username}' retrocesso a user.")
-        else:
-            logging.error(f"Impossibile retrocedere l'utente '{username}'.")
-
-    def list_users(self):
-        users = self.users.list_users()
-        if users is not None:
-            logging.info("Elenco degli utenti richiesto.")
-            print("Lista degli utenti:")
-            for user in users:
-                print(f"{user['username']} ({user['role']})")
-        else:
-            logging.error("Impossibile recuperare la lista degli utenti.")
-
-    def backup_database(self, backup_path='/opt/mybbs/data/database_backup.db'):
-        success = self.users.backup_database(backup_path)
-        if success:
-            logging.info(f"Backup del database effettuato con successo in '{backup_path}'.")
-            print(f"Backup del database effettuato in '{backup_path}'.")
-        else:
-            logging.error("Backup del database fallito.")
-            print("Backup del database fallito.")
+    def list_connected_users(self):
+        if not self.sessions:
+            return "Nessun utente connesso.\nOK\n"
+        out = "Utenti attualmente connessi:\n"
+        for sid, info in self.sessions.items():
+            out += f"- {info['username']}\n"
+        return out + "OK\n"
 
     def stop(self):
         self.running = False
@@ -241,59 +212,19 @@ class BBSServer:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Server BBS Testuale")
     parser.add_argument('--adduser', help='Aggiunge un utente admin')
-    parser.add_argument('--adduser-nonadmin', help='Aggiunge un utente non-admin')
-    parser.add_argument('--deluser', help='Rimuove un utente')
-    parser.add_argument('--promote', help='Promuove un utente a admin')
-    parser.add_argument('--demote', help='Revoca lo status admin di un utente')
-    parser.add_argument('--listusers', action='store_true', help='Lista degli utenti registrati')
-    parser.add_argument('--backup', nargs='?', const='/opt/mybbs/data/database_backup.db', default=None, help='Backup del database (specifica il percorso opzionale)')
     args = parser.parse_args()
 
     server = BBSServer()
 
-    # Gestione dei comandi amministrativi
     if args.adduser:
         import getpass
-        pw = getpass.getpass(f"Inserire password per l'utente admin '{args.adduser}': ")
-        server.create_user(args.adduser, pw, role='admin')
-        print(f"Utente admin '{args.adduser}' creato.")
+        pw = getpass.getpass(f"Password per l'utente admin '{args.adduser}': ")
+        server.users.add_user(args.adduser, pw, role='admin')
         sys.exit(0)
-    
-    if args.adduser_nonadmin:
-        import getpass
-        pw = getpass.getpass(f"Inserire password per l'utente '{args.adduser_nonadmin}': ")
-        server.create_user(args.adduser_nonadmin, pw, role='user')
-        print(f"Utente '{args.adduser_nonadmin}' creato come non-admin.")
-        sys.exit(0)
-    
-    if args.deluser:
-        server.remove_user(args.deluser)
-        print(f"Utente '{args.deluser}' rimosso.")
-        sys.exit(0)
-    
-    if args.promote:
-        server.promote_user(args.promote)
-        print(f"Utente '{args.promote}' promosso a admin.")
-        sys.exit(0)
-    
-    if args.demote:
-        server.demote_user(args.demote)
-        print(f"Utente '{args.demote}' retrocesso a user.")
-        sys.exit(0)
-    
-    if args.listusers:
-        server.list_users()
-        sys.exit(0)
-    
-    if args.backup is not None:
-        backup_path = args.backup
-        server.backup_database(backup_path)
-        sys.exit(0)
-    
-    # Avvio del server se nessun comando amministrativo è stato fornito
+
     server.start_socket()
     logging.info("BBS Server in esecuzione.")
-    print("BBS Server in esecuzione. Controlla il log per dettagli.")
+    print("BBS Server in esecuzione.")
     try:
         while True:
             time.sleep(1)

@@ -1,64 +1,75 @@
-# modules/chat.py
 import time
-import logging  # Importa il modulo logging
+import logging
 
 class ChatManager:
     def __init__(self, conn):
         self.conn = conn
-        self.messages = []  # Buffer semplice in memoria
+        self.messages = []  # Buffer in memoria per la chat pubblica
 
     def handle_command(self, line, user_id):
-        parts = line.split(' ', 1)
+        """
+        line: es. "SEND Hello?" o "RECV" o "SENDPRIVATE user ciao"
+        """
+        parts = line.strip().split(' ', 1)
         cmd = parts[0].upper() if parts else ''
         arg = parts[1] if len(parts) > 1 else ''
+        logging.debug(f"[ChatManager] cmd={cmd}, arg={arg}, user_id={user_id}")
+
         try:
             if cmd == 'RECV':
                 out = ""
                 for m in self.messages:
-                    out += f"{m}\n"
-                logging.debug(f"Utente ID {user_id} ha richiesto la chat pubblica.")
+                    out += m + "\n"
                 return out + "OK\n"
 
             elif cmd == 'SEND':
-                # SEND <msg>
-                msg = arg
-                # Ottenere username dell'utente
+                msg = arg.strip()
+                if not msg:
+                    logging.warning(f"Messaggio vuoto inviato in chat. user_id={user_id}")
+                    return "OK\n"
+
                 c = self.conn.cursor()
-                c.execute("SELECT username FROM users WHERE id = ?", (user_id,))
-                u = c.fetchone()
-                uname = u['username'] if u else '???'
+                c.execute("SELECT username FROM users WHERE id=?", (user_id,))
+                row = c.fetchone()
+                uname = row['username'] if row else '???'
                 timestamp = time.strftime('%H:%M:%S')
-                line = f"[{uname}] {msg} ({timestamp})"
-                self.messages.append(line)
-                logging.info(f"Utente '{uname}' ha inviato un messaggio nella chat pubblica.")
+                line_to_add = f"[{uname}] {msg} ({timestamp})"
+                self.messages.append(line_to_add)
+                logging.info(f"ChatManager: Utente '{uname}' ha inviato in chat: {msg}")
                 return "OK\n"
 
             elif cmd == 'SENDPRIVATE':
-                # SENDPRIVATE user msg
+                # /msg user msg
                 if ' ' not in arg:
-                    logging.warning("Comando SENDPRIVATE con formato errato.")
                     return "ERR SENDPRIVATE <user> <msg>\n"
-                to_user, msg = arg.split(' ', 1)
+                to_user, message = arg.split(' ', 1)
+
                 c = self.conn.cursor()
-                c.execute("SELECT id FROM users WHERE username = ?", (to_user,))
+                c.execute("SELECT id FROM users WHERE username=?", (to_user,))
                 row = c.fetchone()
                 if not row:
-                    logging.warning(f"Tentativo di inviare messaggio privato a utente inesistente: '{to_user}'.")
+                    logging.warning(f"Destinatario '{to_user}' inesistente.")
                     return "ERR user not found\n"
+
                 to_id = row['id']
-                ts = time.strftime("%Y-%m-%d %H:%M:%S")
+                ts = time.strftime('%Y-%m-%d %H:%M:%S')
                 c.execute("""
-                    INSERT INTO private_messages(from_id, to_id, timestamp, body) 
+                    INSERT INTO private_messages(from_id, to_id, timestamp, body)
                     VALUES (?, ?, ?, ?)
-                """, (user_id, to_id, ts, msg))
+                """, (user_id, to_id, ts, message))
                 self.conn.commit()
-                logging.info(f"Utente ID {user_id} ha inviato un messaggio privato a ID {to_id}.")
+
+                c.execute("SELECT username FROM users WHERE id=?", (user_id,))
+                srow = c.fetchone()
+                uname = srow['username'] if srow else '???'
+                logging.info(f"ChatManager: '{uname}'(id={user_id}) -> privato a '{to_user}'(id={to_id}): {message}")
                 return "OK Private message sent\n"
 
             else:
-                logging.warning(f"Comando chat sconosciuto: '{cmd}'.")
+                logging.warning(f"Comando chat sconosciuto: '{cmd}' user_id={user_id}")
                 return "ERR Unknown chat command\n"
+
         except Exception as e:
-            logging.error(f"Errore gestendo comandi chat per utente ID {user_id}: {e}")
+            logging.error(f"Errore chat user_id={user_id}: {e}")
             return "ERR Server error\n"
 
