@@ -1,0 +1,323 @@
+2024-12-23 22:44:12 [INFO] Connessione al database SQLite stabilita.
+2024-12-23 22:44:19 [ERROR] Errore aggiungendo utente 'Indrid_Cold': attempt to write a readonly database
+2024-12-23 22:44:19 [ERROR] Impossibile creare l'utente 'Indrid_Cold'.
+2024-12-23 22:45:33 [INFO] Connessione al database SQLite stabilita.
+2024-12-23 22:45:33 [INFO] Elenco degli utenti richiesto.
+2024-12-23 22:46:22 [INFO] Connessione al database SQLite stabilita.
+2024-12-23 22:46:30 [INFO] Utente 'Indrid_Cold' aggiunto con ruolo 'admin'.
+2024-12-23 22:46:30 [INFO] Utente 'Indrid_Cold' creato con ruolo 'admin'.
+2024-12-24 19:20:51 [INFO] Connessione al database SQLite stabilita.
+2024-12-24 19:20:51 [INFO] Elenco degli utenti richiesto.
+2024-12-24 19:26:49 [INFO] Connessione al database SQLite stabilita.
+2024-12-24 19:26:49 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-24 19:26:49 [INFO] BBS Server in esecuzione.
+2024-12-24 19:33:09 [INFO] Connessione accettata da ('127.0.0.1', 41128)
+2024-12-24 19:33:19 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): LOGIN Indrid_Cold arkham666
+2024-12-24 19:33:20 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 19:33:23 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 41128).
+2024-12-24 19:34:19 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): BOARD LIST
+2024-12-24 19:34:21 [DEBUG] Utente ID 1 ha richiesto la lista della bacheca.
+2024-12-24 19:34:47 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): BOARD NEW Test|Questo è un messaggio di prova della bacheca.
+2024-12-24 19:34:47 [DEBUG] Divido arg: Test|Questo è un messaggio di prova della bacheca.
+2024-12-24 19:34:47 [DEBUG] Oggetto: Test, Corpo: Questo è un messaggio di prova della bacheca.
+2024-12-24 19:34:54 [INFO] Utente ID 1 ha postato un nuovo messaggio: 'Test'.
+2024-12-24 19:34:59 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): BOARD LIST
+2024-12-24 19:35:02 [DEBUG] Utente ID 1 ha richiesto la lista della bacheca.
+2024-12-24 19:35:08 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): BOARD READ 1
+2024-12-24 19:35:08 [INFO] Utente ID 1 ha letto il messaggio ID 1.
+2024-12-24 19:36:38 [INFO] Connessione al database SQLite stabilita.
+2024-12-24 19:36:46 [INFO] Utente 'Test_User' aggiunto con ruolo 'user'.
+2024-12-24 19:36:46 [INFO] Utente 'Test_User' creato con ruolo 'user'.
+2024-12-24 19:36:55 [INFO] Connessione al database SQLite stabilita.
+2024-12-24 19:36:55 [INFO] Elenco degli utenti richiesto.
+2024-12-24 19:37:12 [INFO] Connessione accettata da ('127.0.0.1', 36290)
+2024-12-24 19:37:20 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): LOGIN Test_User arkham666
+2024-12-24 19:37:21 [INFO] Utente 'Test_User' autenticato con successo.
+2024-12-24 19:37:21 [INFO] Utente 'Test_User' autenticato da ('127.0.0.1', 36290).
+2024-12-24 19:37:26 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): BOARD LIST
+2024-12-24 19:37:32 [DEBUG] Utente ID 2 ha richiesto la lista della bacheca.
+2024-12-24 19:37:45 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): BOARD LIST
+2024-12-24 19:37:45 [DEBUG] Utente ID 2 ha richiesto la lista della bacheca.
+2024-12-24 19:37:53 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): BOARD LIST
+2024-12-24 19:37:53 [DEBUG] Utente ID 2 ha richiesto la lista della bacheca.
+2024-12-24 19:38:20 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): BOARD NEW Test #2|Messaggio di test bacheca.
+2024-12-24 19:38:20 [DEBUG] Divido arg: Test #2|Messaggio di test bacheca.
+2024-12-24 19:38:20 [DEBUG] Oggetto: Test #2, Corpo: Messaggio di test bacheca.
+2024-12-24 19:38:24 [INFO] Utente ID 2 ha postato un nuovo messaggio: 'Test #2'.
+2024-12-24 19:38:24 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): BOARD LIST
+2024-12-24 19:38:24 [DEBUG] Utente ID 2 ha richiesto la lista della bacheca.
+2024-12-24 19:38:54 [INFO] Connessione al database SQLite stabilita.
+2024-12-24 19:39:11 [INFO] Utente 'Elettrone' aggiunto con ruolo 'user'.
+2024-12-24 19:39:11 [INFO] Utente 'Elettrone' creato con ruolo 'user'.
+2024-12-24 19:39:29 [INFO] Connessione accettata da ('127.0.0.1', 48838)
+2024-12-24 19:39:37 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): LOGIN Elettrone elettrone
+2024-12-24 19:39:38 [INFO] Utente 'Elettrone' autenticato con successo.
+2024-12-24 19:39:38 [INFO] Utente 'Elettrone' autenticato da ('127.0.0.1', 48838).
+2024-12-24 19:39:43 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): BOARD LIST
+2024-12-24 19:39:43 [DEBUG] Utente ID 3 ha richiesto la lista della bacheca.
+2024-12-24 19:40:11 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): PMSG LIST
+2024-12-24 19:40:11 [DEBUG] Utente ID 1 ha richiesto la lista dei messaggi privati non letti.
+2024-12-24 19:40:42 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): PMSG WRITE Elettrone|Ciao Sami, messaggio di test sezione messaggi privati...
+2024-12-24 19:40:42 [DEBUG] Divido arg: Elettrone|Ciao Sami, messaggio di test sezione messaggi privati...
+2024-12-24 19:40:42 [DEBUG] Utente destinatario: Elettrone, Corpo: Ciao Sami, messaggio di test sezione messaggi privati...
+2024-12-24 19:40:44 [INFO] Utente ID 1 ha inviato un messaggio privato a ID 3.
+2024-12-24 19:40:47 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): PMSG LIST
+2024-12-24 19:40:47 [DEBUG] Utente ID 1 ha richiesto la lista dei messaggi privati non letti.
+2024-12-24 19:41:01 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): PMSG LIST
+2024-12-24 19:41:01 [DEBUG] Utente ID 3 ha richiesto la lista dei messaggi privati non letti.
+2024-12-24 19:41:09 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): PMSG READ 1
+2024-12-24 19:41:20 [INFO] Utente ID 3 ha letto il messaggio privato ID 1.
+2024-12-24 19:41:30 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): CHAT RECV
+2024-12-24 19:41:30 [DEBUG] Utente ID 3 ha richiesto la chat pubblica.
+2024-12-24 19:41:34 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): CHAT SEND Hello?
+2024-12-24 19:41:34 [INFO] Utente 'Elettrone' ha inviato un messaggio nella chat pubblica.
+2024-12-24 19:41:34 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): CHAT RECV
+2024-12-24 19:41:34 [DEBUG] Utente ID 3 ha richiesto la chat pubblica.
+2024-12-24 19:41:41 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): CHAT RECV
+2024-12-24 19:41:41 [DEBUG] Utente ID 2 ha richiesto la chat pubblica.
+2024-12-24 19:41:46 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): CHAT SEND Hello?
+2024-12-24 19:41:46 [INFO] Utente 'Test_User' ha inviato un messaggio nella chat pubblica.
+2024-12-24 19:41:46 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): CHAT RECV
+2024-12-24 19:41:46 [DEBUG] Utente ID 2 ha richiesto la chat pubblica.
+2024-12-24 19:42:06 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): TEXT LIST
+2024-12-24 19:42:06 [DEBUG] Comando TEXT ricevuto: cmd='LIST', arg=''
+2024-12-24 19:42:06 [DEBUG] Richiesta lista documenti testuali.
+2024-12-24 19:42:12 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): TEXT READ rules.txt
+2024-12-24 19:42:12 [DEBUG] Comando TEXT ricevuto: cmd='READ', arg='rules.txt'
+2024-12-24 19:42:12 [DEBUG] Path completo del file da leggere: /opt/mybbs/data/docs/rules.txt
+2024-12-24 19:42:12 [INFO] Documento 'rules.txt' letto con successo.
+2024-12-24 19:42:30 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): FILE LIST
+2024-12-24 19:42:30 [DEBUG] Utente ID 1 ha richiesto la lista dei file.
+2024-12-24 19:43:11 [DEBUG] Ricevuto comando da ('127.0.0.1', 48838): LOGOUT
+2024-12-24 19:43:11 [INFO] Utente ID 3 disconnesso da ('127.0.0.1', 48838).
+2024-12-24 19:43:11 [INFO] Connessione chiusa da ('127.0.0.1', 48838).
+2024-12-24 19:43:14 [DEBUG] Ricevuto comando da ('127.0.0.1', 36290): LOGOUT
+2024-12-24 19:43:14 [INFO] Utente ID 2 disconnesso da ('127.0.0.1', 36290).
+2024-12-24 19:43:14 [INFO] Connessione chiusa da ('127.0.0.1', 36290).
+2024-12-24 19:43:23 [DEBUG] Ricevuto comando da ('127.0.0.1', 41128): LOGOUT
+2024-12-24 19:43:23 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 41128).
+2024-12-24 19:43:23 [INFO] Connessione chiusa da ('127.0.0.1', 41128).
+2024-12-24 19:48:51 [INFO] Connessione accettata da ('127.0.0.1', 37822)
+2024-12-24 19:49:07 [DEBUG] Ricevuto comando da ('127.0.0.1', 37822): LOGIN bbsuser bbsuser
+2024-12-24 19:49:07 [WARNING] Autenticazione fallita per utente 'bbsuser'.
+2024-12-24 19:49:07 [WARNING] Autenticazione fallita per utente 'bbsuser' da ('127.0.0.1', 37822).
+2024-12-24 19:49:07 [INFO] Connessione chiusa da ('127.0.0.1', 37822).
+2024-12-24 19:49:13 [INFO] Connessione accettata da ('127.0.0.1', 33654)
+2024-12-24 19:49:34 [DEBUG] Ricevuto comando da ('127.0.0.1', 33654): LOGIN Indrid_Cold arkham666
+2024-12-24 19:49:36 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 19:49:36 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 33654).
+2024-12-24 19:49:42 [DEBUG] Ricevuto comando da ('127.0.0.1', 33654): LOGOUT
+2024-12-24 19:49:42 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 33654).
+2024-12-24 19:49:42 [INFO] Connessione chiusa da ('127.0.0.1', 33654).
+2024-12-24 20:17:30 [INFO] Connessione accettata da ('127.0.0.1', 43980)
+2024-12-24 20:17:47 [DEBUG] Ricevuto comando da ('127.0.0.1', 43980): LOGIN Indrid_Cold arkham666
+2024-12-24 20:17:48 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 20:17:48 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 43980).
+2024-12-24 20:17:51 [DEBUG] Ricevuto comando da ('127.0.0.1', 43980): LOGOUT
+2024-12-24 20:17:51 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 43980).
+2024-12-24 20:17:51 [INFO] Connessione chiusa da ('127.0.0.1', 43980).
+2024-12-24 20:33:00 [INFO] Connessione accettata da ('127.0.0.1', 48254)
+2024-12-24 20:33:08 [DEBUG] Ricevuto comando da ('127.0.0.1', 48254): LOGIN Indrid_Cold arkham666
+2024-12-24 20:33:09 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 20:33:09 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 48254).
+2024-12-24 20:33:12 [DEBUG] Ricevuto comando da ('127.0.0.1', 48254): LOGOUT
+2024-12-24 20:33:12 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 48254).
+2024-12-24 20:33:12 [INFO] Connessione chiusa da ('127.0.0.1', 48254).
+2024-12-24 20:40:35 [INFO] Connessione accettata da ('127.0.0.1', 37204)
+2024-12-24 20:40:42 [DEBUG] Ricevuto comando da ('127.0.0.1', 37204): LOGIN Indrid_Cold arkham666
+2024-12-24 20:40:48 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 20:40:48 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 37204).
+2024-12-24 20:40:50 [DEBUG] Ricevuto comando da ('127.0.0.1', 37204): LOGOUT
+2024-12-24 20:40:51 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 37204).
+2024-12-24 20:40:51 [INFO] Connessione chiusa da ('127.0.0.1', 37204).
+2024-12-24 20:41:40 [INFO] Connessione accettata da ('127.0.0.1', 41476)
+2024-12-24 20:41:47 [DEBUG] Ricevuto comando da ('127.0.0.1', 41476): LOGIN Indrid_Cold arkham666
+2024-12-24 20:41:48 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-24 20:41:48 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 41476).
+2024-12-24 20:41:51 [DEBUG] Ricevuto comando da ('127.0.0.1', 41476): LOGOUT
+2024-12-24 20:41:51 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 41476).
+2024-12-24 20:41:51 [INFO] Connessione chiusa da ('127.0.0.1', 41476).
+2024-12-25 09:07:27 [INFO] Connessione accettata da ('127.0.0.1', 53188)
+2024-12-25 09:07:36 [DEBUG] Ricevuto comando da ('127.0.0.1', 53188): LOGIN Indrid_Cold arham666
+2024-12-25 09:07:42 [WARNING] Autenticazione fallita per utente 'Indrid_Cold'.
+2024-12-25 09:07:42 [WARNING] Autenticazione fallita per utente 'Indrid_Cold' da ('127.0.0.1', 53188).
+2024-12-25 09:07:42 [INFO] Connessione chiusa da ('127.0.0.1', 53188).
+2024-12-25 09:07:47 [INFO] Connessione accettata da ('127.0.0.1', 55844)
+2024-12-25 09:07:56 [DEBUG] Ricevuto comando da ('127.0.0.1', 55844): LOGIN Indrid_Cold arkham666
+2024-12-25 09:07:57 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 09:07:57 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 55844).
+2024-12-25 09:08:01 [DEBUG] Ricevuto comando da ('127.0.0.1', 55844): LOGOUT
+2024-12-25 09:08:01 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 55844).
+2024-12-25 09:08:01 [INFO] Connessione chiusa da ('127.0.0.1', 55844).
+2024-12-25 09:09:07 [INFO] Connessione accettata da ('127.0.0.1', 54014)
+2024-12-25 09:09:16 [DEBUG] Ricevuto comando da ('127.0.0.1', 54014): LOGIN Indrid_Cold arkham666
+2024-12-25 09:09:17 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 09:09:17 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 54014).
+2024-12-25 09:09:20 [DEBUG] Ricevuto comando da ('127.0.0.1', 54014): LOGOUT
+2024-12-25 09:09:20 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 54014).
+2024-12-25 09:09:20 [INFO] Connessione chiusa da ('127.0.0.1', 54014).
+2024-12-25 10:02:58 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 10:02:58 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 10:02:58 [INFO] BBS Server in esecuzione.
+2024-12-25 10:03:00 [INFO] Connessione accettata da ('127.0.0.1', 60244)
+2024-12-25 10:03:12 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): LOGIN Indrid_Cold arkham666
+2024-12-25 10:03:13 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:03:13 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 60244).
+2024-12-25 10:03:19 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): CHAT RECV
+2024-12-25 10:03:19 [DEBUG] Utente ID 1 ha richiesto la chat pubblica.
+2024-12-25 10:03:24 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): CHAT SEND Hello?
+2024-12-25 10:03:24 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat pubblica: ''.
+2024-12-25 10:03:24 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): CHAT RECV
+2024-12-25 10:03:24 [DEBUG] Utente ID 1 ha richiesto la chat pubblica.
+2024-12-25 10:03:35 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): CHAT SEND Test.
+2024-12-25 10:03:35 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat pubblica: ''.
+2024-12-25 10:03:35 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): CHAT RECV
+2024-12-25 10:03:35 [DEBUG] Utente ID 1 ha richiesto la chat pubblica.
+2024-12-25 10:07:00 [DEBUG] Ricevuto comando da ('127.0.0.1', 60244): LOGOUT
+2024-12-25 10:07:00 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 60244).
+2024-12-25 10:07:00 [INFO] Connessione chiusa da ('127.0.0.1', 60244).
+2024-12-25 10:07:11 [INFO] Connessione accettata da ('127.0.0.1', 43878)
+2024-12-25 10:07:20 [DEBUG] Ricevuto comando da ('127.0.0.1', 43878): LOGIN Indrid_Cold arkham666
+2024-12-25 10:07:21 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:07:21 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 43878).
+2024-12-25 10:07:26 [DEBUG] Ricevuto comando da ('127.0.0.1', 43878): LOGOUT
+2024-12-25 10:07:26 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 43878).
+2024-12-25 10:07:26 [INFO] Connessione chiusa da ('127.0.0.1', 43878).
+2024-12-25 10:12:23 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 10:12:23 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 10:12:23 [INFO] BBS Server in esecuzione.
+2024-12-25 10:13:48 [INFO] Connessione accettata da ('127.0.0.1', 41494)
+2024-12-25 10:13:57 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): LOGIN Indrid_Cold arkham666
+2024-12-25 10:14:00 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:14:00 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 41494).
+2024-12-25 10:14:03 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): WHO
+2024-12-25 10:14:13 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): CHAT RECV
+2024-12-25 10:14:13 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:14:19 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): CHAT SEND Hello?
+2024-12-25 10:14:19 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat pubblica: 
+2024-12-25 10:14:19 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): CHAT RECV
+2024-12-25 10:14:20 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:14:33 [DEBUG] Ricevuto comando da ('127.0.0.1', 41494): LOGOUT
+2024-12-25 10:14:33 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 41494).
+2024-12-25 10:25:35 [INFO] Connessione accettata da ('127.0.0.1', 60118)
+2024-12-25 10:25:48 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): LOGIN Indrid_Cold arkham666
+2024-12-25 10:25:50 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:25:51 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 60118).
+2024-12-25 10:25:55 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): CHAT RECV
+2024-12-25 10:25:55 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:25:59 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): CHAT SEND Hello?
+2024-12-25 10:26:08 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat pubblica: 
+2024-12-25 10:26:08 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): CHAT RECV
+2024-12-25 10:26:08 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:26:12 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): WHO
+2024-12-25 10:26:14 [DEBUG] Ricevuto comando da ('127.0.0.1', 60118): LOGOUT
+2024-12-25 10:26:14 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 60118).
+2024-12-25 10:51:12 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 10:51:12 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 10:51:12 [INFO] BBS Server in esecuzione.
+2024-12-25 10:51:27 [INFO] Connessione accettata da ('127.0.0.1', 34376)
+2024-12-25 10:51:42 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): LOGIN Indrid_Cold arkham666
+2024-12-25 10:51:43 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:51:43 [INFO] Utente 'Indrid_Cold' autenticato da ('127.0.0.1', 34376).
+2024-12-25 10:51:46 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT RECV
+2024-12-25 10:51:46 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:51:50 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT SEND Hello?
+2024-12-25 10:51:51 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat: 
+2024-12-25 10:51:51 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT RECV
+2024-12-25 10:51:51 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:51:51 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT RECV
+2024-12-25 10:51:51 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:52:01 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT SEND Test.
+2024-12-25 10:52:01 [INFO] Utente 'Indrid_Cold' ha inviato un messaggio nella chat: 
+2024-12-25 10:52:01 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT RECV
+2024-12-25 10:52:01 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:52:01 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): CHAT RECV
+2024-12-25 10:52:01 [DEBUG] Invio chat pubblica a utente ID 1.
+2024-12-25 10:52:07 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): WHO
+2024-12-25 10:52:16 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): PASSWD arkham666|arkham666
+2024-12-25 10:52:22 [INFO] Password cambiata correttamente per utente 'Indrid_Cold'.
+2024-12-25 10:52:29 [DEBUG] Ricevuto comando da ('127.0.0.1', 34376): LOGOUT
+2024-12-25 10:52:35 [INFO] Utente ID 1 disconnesso da ('127.0.0.1', 34376).
+2024-12-25 10:57:19 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 10:57:19 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 10:57:19 [INFO] BBS Server in esecuzione.
+2024-12-25 10:57:23 [INFO] Connessione accettata da ('127.0.0.1', 51064)
+2024-12-25 10:57:52 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: LOGIN Indrid_Cold arkham666
+2024-12-25 10:57:53 [INFO] Utente 'Indrid_Cold' autenticato con successo.
+2024-12-25 10:57:53 [INFO] [('127.0.0.1', 51064)] Utente 'Indrid_Cold' autenticato. session_id=1
+2024-12-25 10:57:58 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: WHO
+2024-12-25 10:58:10 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: CHAT RECV
+2024-12-25 10:58:10 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 10:58:18 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: CHAT SEND Hello?
+2024-12-25 10:58:20 [DEBUG] [ChatManager] cmd=SEND, arg=, user_id=1
+2024-12-25 10:58:20 [WARNING] Messaggio vuoto inviato in chat.
+2024-12-25 10:58:20 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: CHAT RECV
+2024-12-25 10:58:20 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 10:58:20 [DEBUG] [('127.0.0.1', 51064)] -> Comando ricevuto: CHAT RECV
+2024-12-25 10:58:20 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:05:04 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 11:05:04 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 11:05:04 [INFO] BBS Server in esecuzione.
+2024-12-25 11:05:21 [INFO] Connessione accettata da ('127.0.0.1', 56040)
+2024-12-25 11:05:32 [INFO] Connessione accettata da ('127.0.0.1', 36688)
+2024-12-25 11:05:37 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: LOGIN Indrid_Cold arkham666
+2024-12-25 11:05:41 [INFO] [('127.0.0.1', 56040)] Utente 'Indrid_Cold' autenticato. session_id=1
+2024-12-25 11:06:02 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: LOGIN Elettrone elettrone
+2024-12-25 11:06:03 [INFO] [('127.0.0.1', 36688)] Utente 'Elettrone' autenticato. session_id=2
+2024-12-25 11:06:14 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: WHO
+2024-12-25 11:06:23 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:23 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:06:27 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:27 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:06:32 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT SEND Hello?
+2024-12-25 11:06:32 [DEBUG] [ChatManager] cmd=SEND, arg=Hello?, user_id=1
+2024-12-25 11:06:32 [INFO] ChatManager: Utente 'Indrid_Cold' ha inviato in chat: Hello?
+2024-12-25 11:06:32 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:32 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:06:32 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:32 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:06:43 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT SEND ?
+2024-12-25 11:06:43 [DEBUG] [ChatManager] cmd=SEND, arg=?, user_id=3
+2024-12-25 11:06:43 [INFO] ChatManager: Utente 'Elettrone' ha inviato in chat: ?
+2024-12-25 11:06:43 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:43 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:06:43 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:43 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:06:54 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT SEND News?
+2024-12-25 11:06:54 [DEBUG] [ChatManager] cmd=SEND, arg=News?, user_id=3
+2024-12-25 11:06:54 [INFO] ChatManager: Utente 'Elettrone' ha inviato in chat: News?
+2024-12-25 11:06:54 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:54 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:06:54 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:06:54 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:07:01 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT SEND News?
+2024-12-25 11:07:01 [DEBUG] [ChatManager] cmd=SEND, arg=News?, user_id=1
+2024-12-25 11:07:01 [INFO] ChatManager: Utente 'Indrid_Cold' ha inviato in chat: News?
+2024-12-25 11:07:01 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:01 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:07:01 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:01 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:07:08 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT SEND
+2024-12-25 11:07:08 [DEBUG] [ChatManager] cmd=SEND, arg=, user_id=1
+2024-12-25 11:07:08 [WARNING] Messaggio vuoto inviato in chat. user_id=1
+2024-12-25 11:07:08 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:08 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:07:08 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:08 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:07:16 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT SEND Test.
+2024-12-25 11:07:16 [DEBUG] [ChatManager] cmd=SEND, arg=Test., user_id=3
+2024-12-25 11:07:16 [INFO] ChatManager: Utente 'Elettrone' ha inviato in chat: Test.
+2024-12-25 11:07:16 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:16 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:07:16 [DEBUG] [('127.0.0.1', 36688)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:16 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=3
+2024-12-25 11:07:18 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT SEND
+2024-12-25 11:07:18 [DEBUG] [ChatManager] cmd=SEND, arg=, user_id=1
+2024-12-25 11:07:18 [WARNING] Messaggio vuoto inviato in chat. user_id=1
+2024-12-25 11:07:18 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:18 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:07:18 [DEBUG] [('127.0.0.1', 56040)] -> Comando ricevuto: CHAT RECV
+2024-12-25 11:07:18 [DEBUG] [ChatManager] cmd=RECV, arg=, user_id=1
+2024-12-25 11:12:00 [INFO] Connessione al database SQLite stabilita.
+2024-12-25 11:12:00 [INFO] BBS Server in ascolto su 0.0.0.0:12345
+2024-12-25 11:12:00 [INFO] BBS Server in esecuzione.
