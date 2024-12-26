@@ -92,7 +92,11 @@ Per caricare un file:
 
 
 
-### Interfaccia Admin: ### 
+### Interfaccia Admin: ###
+
+    Direttamente da riga di comando:
+
+    sudo -u bbsuser python3 /opt/mybbs/bbs_server.py <opzione> 
 
     -h, --help                              Mostra questo messaggio di aiuto ed esce
     --adduser <username>                    Aggiunge un utente admin
@@ -102,6 +106,16 @@ Per caricare un file:
     --demote <username>                     Revoca lo status admin di un utente
     --listusers                             Lista degli utenti registrati
     --backup <backup>                       Backup del database (specifica il percorso opzionale)
+    
+    Oppure direttamente da BBS se si ha status di *admin*: quando l'utente fa login, il client richiede
+    il ruolo (ROLE) e, se è admin, mostra un menu aggiuntivo (voce [8] Admin Panel) accessibile solo agli admin:
+
+    Aggiungere utenti (admin o non-admin)
+    Rimuovere utenti
+    Promuovere utenti ad admin
+    Revocare admin (demote)
+    Listare tutti gli utenti
+    Fare il backup del database (chiamando internamente server.users.backup_database(...))
 
     NB: Per automatizzare il processo di backup, è possibile utilizzare lo script "backup,sh", che 
     esegue il backup utilizzando il comando già implementato nel server BBS. Questo script aggiungerà 
