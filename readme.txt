@@ -26,6 +26,24 @@ mybbs/
     ├── bbs_cli.bat
     └── bbs_cli.exe
 
+bbs_server.py: Script principale del server BBS.
+bbs_cli.py: Client testuale per interagire con il server BBS.
+modules/: Contiene i moduli per la gestione delle diverse funzionalità.
+
+    users.py: Gestione utenti e ruoli.
+    board.py: Gestione della bacheca messaggi.
+    chat.py: Gestione della chat pubblica.
+    files.py: Gestione dell'archivio file.
+    textlib.py: Gestione dell'archivio testuale.
+
+data/: Directory per i dati persistenti.
+
+    database.db: Database SQLite.
+    uploads/: Cartella per i file caricati.
+    docs/: Cartella per i documenti testuali.
+
+schema.sql: Script SQL per creare lo schema del database.
+
 
 
 ### Il menu principale del client: ### 
