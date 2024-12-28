@@ -1,27 +1,18 @@
 ### Panoramica di MyBBS ###
 
-MyBBS è un sistema minimale in Python di Bulletin Board System con accesso via SSH e database SQLite, che permette agli 
-utenti di interagire in un ambiente testuale strutturato e sicuro.
+MyBBS è un sistema minimale in Python di Bulletin Board System con accesso via SSH e database SQLite, che permette agli utenti di interagire in un ambiente testuale strutturato e sicuro.
 
 Le principali funzionalità includono:
 
-    Bacheca Messaggi: Consente agli utenti di creare, visualizzare e rispondere a messaggi, favorendo la discussione e 
-lo scambio di idee.
+    Bacheca Messaggi: Consente agli utenti di creare, visualizzare e rispondere a messaggi, favorendo la discussione e lo scambio di idee.
     Messaggi Privati: Facilita la comunicazione diretta tra utenti, permettendo l'invio e la gestione di messaggi privati.
-    Archivio File e Archivio Testuale: Offre la possibilità di caricare, registrare, e consultare file e documenti di testo,
-organizzati per una facile accessibilità.
-    Chat Pubblica: Implementa una chat con aggiornamenti automatici ogni pochi secondi, visualizzando le ultime 30 righe di
-conversazione e supportando l'invio di messaggi privati tramite comandi specifici.
-    Gestione Utenti con Ruoli Differenziati: Distinguendo tra utenti "admin" e "non-admin", il sistema permette agli 
-amministratori di gestire gli account, promuovere o demotare utenti, e effettuare backup del database direttamente tramite un
-menu dedicato.
-    Sicurezza e Autenticazione: Utilizza SQLite per la gestione dei dati e bcrypt per l'hashing sicuro delle password, garantendo
-un accesso protetto e la salvaguardia delle informazioni degli utenti.
-    Interfaccia Client-Server: Una chiara separazione tra server e client consente una gestione efficiente delle connessioni e
-delle funzionalità, offrendo un'esperienza utente fluida e reattiva.
+    Archivio File e Archivio Testuale: Offre la possibilità di caricare, registrare, e consultare file e documenti di testo, organizzati per una facile accessibilità.
+    Chat Pubblica: Implementa una chat con aggiornamenti automatici ogni pochi secondi, visualizzando le ultime 30 righe di conversazione e supportando l'invio di messaggi privati tramite comandi specifici.
+    Gestione Utenti con Ruoli Differenziati: Distinguendo tra utenti "admin" e "non-admin", il sistema permette agli amministratori di gestire gli account, promuovere o demotare utenti, e effettuare backup del database direttamente tramite un menu dedicato.
+    Sicurezza e Autenticazione: Utilizza SQLite per la gestione dei dati e bcrypt per l'hashing sicuro delle password, garantendo un accesso protetto e la salvaguardia delle informazioni degli utenti.
+    Interfaccia Client-Server: Una chiara separazione tra server e client consente una gestione efficiente delle connessioni e delle funzionalità, offrendo un'esperienza utente fluida e reattiva.
 
-Questo BBS testuale si presenta come una soluzione robusta e modulare, ideale per comunità che preferiscono un'interazione basata
-su testo, offrendo strumenti avanzati per la gestione e la comunicazione all'interno della piattaforma.
+Questo BBS testuale si presenta come una soluzione robusta e modulare, ideale per comunità che preferiscono un'interazione basata su testo, offrendo strumenti avanzati per la gestione e la comunicazione all'interno della piattaforma.
 
 
 
